@@ -1,0 +1,41 @@
+<div class="login-page m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-md-6 container-login-logo">
+      <div class="row justify-content-md-center d-flex align-items-center h-100">
+        <div class="logo-login">
+          <img class="login-logo-abd"
+            src="https://www.zabud.com.co/wp-content/uploads/2021/07/logo_principal_blanco.png" alt="Logo-abd">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 container-login-form">
+      <div class="row justify-content-md-center d-flex align-items-center h-100">
+        <div class="col-md-8 container-login-abd">
+          <div class="logo-login">
+            <img class="login-logo-abd-phone w-50 d-none m-auto"
+              src="https://sapabd.blob.core.windows.net/assets-public/principal-logo.png" alt="Logo-abd">
+          </div>
+          <h1 class="text-center title-login-abd">Zabud Company</h1>
+          <h3 class="text-center subtitle-login-abd">Zabud Change password</h3>
+
+
+          <div class="register">
+            <form class="custom-form" method="post">
+              <h1></h1>
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
+              <input type="password" [(ngModel)]="password" name="password" placeholder="Password"
+                required="required" />
+              <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password"
+                required="required" />
+              <button type="submit" (click)="register()">Change</button>
+            </form>
+          </div>
+
+          <div class="row d-flex justify-content-center align-items-center mt-5">
+            <p class="paragraph-login-abd text-center"><a [routerLink]="['/login']">Back to login.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

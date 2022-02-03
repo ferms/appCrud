@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "bb591f97-a2ef-4499-82b6-1dfe0eb95ce6"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,9 +34,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "src/assets/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/@popperjs/core/dist/umd/popper.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "node_modules/sweetalert2/dist/sweetalert2.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,9 +109,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "src/assets/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/@popperjs/core/dist/umd/popper.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "node_modules/sweetalert2/dist/sweetalert2.min.js"
+            ]
           }
         }
       }
