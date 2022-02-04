@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,14 @@ import { CustomersComponent } from './shared/components/customers/customers.comp
 import { ProductsComponent } from './shared/components/products/products.component';
 import { ProvidersComponent } from './shared/components/providers/providers.component';
 import { BillComponent } from './shared/components/bill/bill.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ProductsService } from './core/services/products.service';
+import { DropDownListModule } from '@progress/kendo-angular-dropdowns';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { PopupModule } from '@progress/kendo-angular-popup';
+
+import { EditService } from './core/services/edit.service';
+
 
 @NgModule({
   declarations: [
@@ -35,10 +43,29 @@ import { BillComponent } from './shared/components/bill/bill.component';
     AppRoutingModule,
     FormsModule,
     CommonModule,
-    BrowserAnimationsModule, 
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    GridModule,
+    HttpClientJsonpModule,
+    DropDownListModule,
+    PopupModule,
+    InputsModule,
+    ReactiveFormsModule
+   
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    ProductsService,
+    {
+      deps: [HttpClient],
+      provide: EditService,
+      useFactory: (jsonp: HttpClient) => () => new EditService(jsonp),
+    },
+  ],
   bootstrap: [AppComponent]
 })
+
+
+
+
 export class AppModule { }

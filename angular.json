@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "bb591f97-a2ef-4499-82b6-1dfe0eb95ce6"
+    "analytics": "04237968-8d5b-49e8-bacc-30e9254dd24a"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crud-zabud": {
+    "marketplace": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,30 +23,46 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/crud-zabud",
+            "outputPath": "dist/marketplace",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "src/assets/styles/styles.scss"
+              {
+                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
+              },
+                "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/sweetalert2/dist/sweetalert2.min.css",
+                "src/assets/styles/styles.scss"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/@popperjs/core/dist/umd/popper.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                "node_modules/sweetalert2/dist/sweetalert2.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/sweetalert2/dist/sweetalert2.min.js"
             ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -58,42 +74,25 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              ]
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "marketplace:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "crud-zabud:build:production"
-            },
-            "development": {
-              "browserTarget": "crud-zabud:build:development"
+              "browserTarget": "marketplace:build:production"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "crud-zabud:build"
+            "browserTarget": "marketplace:build"
           }
         },
         "test": {
@@ -103,26 +102,53 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "src/assets/styles/styles.scss"
+              {
+                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
+              },
+                "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/sweetalert2/dist/sweetalert2.min.css",
+                "src/assets/styles/styles.scss"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/@popperjs/core/dist/umd/popper.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                "node_modules/sweetalert2/dist/sweetalert2.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/sweetalert2/dist/sweetalert2.min.js"
             ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "marketplace:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "marketplace:serve:production"
+            }
           }
         }
       }
     }
   },
-  "defaultProject": "crud-zabud"
+  "defaultProject": "marketplace"
 }

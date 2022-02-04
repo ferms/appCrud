@@ -1,1 +1,33 @@
-<p>providers works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+
+      <h3 class="p-5">Providers</h3>
+
+
+      <kendo-grid [kendoGridReactiveEditing]="createFormGroup" [kendoGridBinding]="products" [pageSize]="10"
+        [pageable]="true" [sortable]="true" [navigable]="true">
+        <ng-template kendoGridToolbarTemplate>
+          <button kendoGridAddCommand>Add new</button>
+        </ng-template>
+        <kendo-grid-column field="ProductName" title="Product Name"></kendo-grid-column>
+        <kendo-grid-column field="UnitPrice" editor="numeric" title="Price"></kendo-grid-column>
+        <kendo-grid-column field="Discontinued" editor="boolean" title="Discontinued"></kendo-grid-column>
+        <kendo-grid-column field="UnitsInStock" editor="numeric" title="Units In Stock"></kendo-grid-column>
+        <kendo-grid-command-column title="command">
+          <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edit</button>
+            <button kendoGridRemoveCommand>Remove</button>
+            <button kendoGridSaveCommand>
+              {{ isNew ? "Add" : "Update" }}
+            </button>
+            <button kendoGridCancelCommand>
+              {{ isNew ? "Discard changes" : "Cancel" }}
+            </button>
+          </ng-template>
+        </kendo-grid-command-column>
+      </kendo-grid>
+
+    </div>
+  </div>
+</div>

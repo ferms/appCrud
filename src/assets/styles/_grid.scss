@@ -1,0 +1,112 @@
+.k-grid {
+    border-color: rgba(255, 255, 255, 0);
+    color: #354052;
+    // font-family: $gotham;
+    font-size: 0.85rem;
+    .k-grid-header {
+        padding: 0px 0px 0px 0px !important;
+        border-color: #ffffff;
+        border-bottom: solid 1px #f3f3f3;
+        font-size: 0.75rem;
+    }
+    th.k-header {
+        color: #5d5d5d;
+        line-height: 1.5em;
+        background-color: white;
+        border: solid 0px white;
+    }
+    tr {
+        background: white;
+        border-bottom: solid 1px #f3f3f3;
+        td {
+            color: #8A96A0;
+            position: relative;
+            &:first-child {
+                // font-family: $gotham-medium;
+                color: #354052;
+            }
+            &:nth-of-type(2) {
+                color: #354052;
+            }
+        }
+    }
+    .k-grid-content {
+        overflow: auto;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+    td,
+    .k-grid-content,
+    .k-grid-header-locked,
+    .k-grid-content-locked {
+        border: solid 0px rgba(255, 255, 255, 0);
+        border-bottom: solid 1px #f3f3f3;
+        ;
+    }
+    .k-alt {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .k-grid-pager {
+        border-color: #ffffff;
+        background-color: #ffffff;
+        margin-left: auto;
+        height: 22px;
+        font-size: 0.8rem;
+        margin-top: 0.9rem;
+    }
+    .k-pager-wrap .k-link,
+    .k-pager-wrap .k-pager-nav {
+        border: solid 0px #ffffff;
+        color: #696969;
+        transition: all .5s ease-in-out;
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+            background-color: #efefef80 !important;
+        }
+    }
+    a.k-link.k-pager-nav {
+        background-color: #eff5fc;
+        border-right: solid 3px white;
+        border-left: solid 2px white;
+    }
+    kendo-pager-prev-buttons {
+        color: #00416A;
+        background-color: #eff5fc;
+    }
+    kendo-pager-next-buttons {
+        color: #00416A;
+        background-color: #eff5fc;
+        .k-pager-wrap .k-link,
+        .k-pager-wrap .k-pager-nav {
+            color: #00416A;
+            background-color: #eff5fc;
+        }
+    }
+    kendo-pager-numeric-buttons {
+        .k-pager-numbers.k-reset {
+            li {
+                a.k-link {
+                    font-size: 0.8rem;
+                    color: #8A96A0;
+                    transition: all .5s ease-in-out;
+                    &:hover {
+                        transform: translateY(-1px);
+                        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+                        background-color: #efefef80 !important;
+                    }
+                    &.k-state-selected {
+                        color: #4A4A4A;
+                        background-color: #ffffff;
+                        &:focus {
+                            box-shadow: 0 0 0 0.1rem rgba(61, 62, 64, 0.25);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    kendo-pager-info.k-pager-info.k-label.ng-star-inserted {
+        color: #4A4A4A;
+    }
+}

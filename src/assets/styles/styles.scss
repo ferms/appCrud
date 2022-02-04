@@ -1,9 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-.div-main {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100vh;
-  max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
+
+
+@import "general";
+@import "grid";
