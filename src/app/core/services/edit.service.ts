@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-import { tap, map } from "rxjs/operators";
+import { tap, map } from 'rxjs/operators';
 
-const CREATE_ACTION = "create";
-const UPDATE_ACTION = "update";
-const REMOVE_ACTION = "destroy";
+const CREATE_ACTION = 'create';
+const UPDATE_ACTION = 'update';
+const REMOVE_ACTION = 'destroy';
 
 @Injectable()
 export class EditService extends BehaviorSubject<any[]> {
@@ -16,7 +16,7 @@ export class EditService extends BehaviorSubject<any[]> {
 
   private data: any[] = [];
 
-  public read() {
+  public read(): void  {
     if (this.data.length) {
       return super.next(this.data);
     }
@@ -32,7 +32,7 @@ export class EditService extends BehaviorSubject<any[]> {
       });
   }
 
-  public save(data: any, isNew?: boolean) {
+  public save(data: any, isNew?: boolean): void  {
     const action = isNew ? CREATE_ACTION : UPDATE_ACTION;
 
     this.reset();
@@ -43,7 +43,7 @@ export class EditService extends BehaviorSubject<any[]> {
     );
   }
 
-  public remove(data: any) {
+  public remove(data: any): void  {
     this.reset();
 
     this.fetch(REMOVE_ACTION, data).subscribe(
@@ -52,7 +52,7 @@ export class EditService extends BehaviorSubject<any[]> {
     );
   }
 
-  public resetItem(dataItem: any) {
+  public resetItem(dataItem: any): void {
     if (!dataItem) {
       return;
     }
@@ -68,22 +68,23 @@ export class EditService extends BehaviorSubject<any[]> {
     super.next(this.data);
   }
 
-  private reset() {
+  private reset(): void  {
     this.data = [];
   }
 
-  private fetch(action: string = "", data?: any): Observable<any[]> {
+  private fetch(action: string = '', data?: any): Observable<any[]> {
     return this.http
       .jsonp(
         `https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(
           data
         )}`,
-        "callback"
+        'callback'
       )
-      .pipe(map((res) => <any[]>res));
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      .pipe(map((res) => <any[]> res));
   }
 
   private serializeModels(data?: any): string {
-    return data ? `&models=${JSON.stringify([data])}` : "";
+    return data ? `&models=${JSON.stringify([data])}` : '';
   }
 }

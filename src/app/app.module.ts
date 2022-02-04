@@ -24,6 +24,9 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { PopupModule } from '@progress/kendo-angular-popup';
 
 import { EditService } from './core/services/edit.service';
+import { BillDetailComponent } from './shared/components/bill-detail/bill-detail.component';
+import { BillService } from './core/services/bill.service';
+import { PopupAnchorDirective } from './shared/components/bill/popup.anchor-target.directive';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { EditService } from './core/services/edit.service';
     CustomersComponent,
     ProductsComponent,
     ProvidersComponent,
-    BillComponent
+    BillComponent,
+    BillDetailComponent,
+    PopupAnchorDirective
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { EditService } from './core/services/edit.service';
   providers: [
     CookieService,
     ProductsService,
+    BillService,
     {
       deps: [HttpClient],
       provide: EditService,

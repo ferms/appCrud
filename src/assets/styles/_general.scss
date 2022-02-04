@@ -91,6 +91,15 @@ h4 {
   }
 }
 
+@media print {
+  app-sidebar {
+    display: none;
+  }
+
+  .btn-impress {
+    display: none;
+  }
+}
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
